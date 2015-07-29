@@ -1,17 +1,5 @@
 #!/usr/bin/env python3
 
-# TODO:
-# ------------------------------------------------------------------------------
-# Parse the markup of the returned page content with beautifulsoup and exclude
-# selected objects. For example, if a page has a certain <div> with non-static
-# content, the user can supply a DOM selector for that <div> and it will be
-# removed from the HTML before the page content is passed to the md5 hasher.
-# Could use --exclude -x argument with a supplied string, and should accept more
-# than one. Example: checkpage --exclude "#article > .current-users" http://...
-# ------------------------------------------------------------------------------
-#
-#
-
 import hashlib
 import optparse
 import urllib.request
@@ -20,7 +8,7 @@ from urllib.error import URLError
 
 def main():
     p = optparse.OptionParser(
-        description='''Verifies that a web page is online and unchanged. 
+        description="""Verifies that a web page is online and unchanged. 
 
 Returns "1" if the supplied hash value matches the hash value of the page 
 content retreived from the suplied URL.
@@ -31,10 +19,10 @@ reply with an HTTP 200 status code.
 Returns "ERROR" in case of DNS error, possibly because the local machine is not
 connected to the internet. These errors are likely unrelated to the status of 
 the target web page.
-        ''',
-        prog='websitecheck',
-        version='websitecheck 0.1',
-        usage='%prog [-v] http://www.example.com/ _KNOWN_EXPECTED_MD5_HASH_STRING_')
+        """,
+        prog='checkpage',
+        version='checkpage 0.1',
+        usage='%prog [-v] http://www.example.com/ KNOWN_EXPECTED_MD5_HASH_STRING')
 
     p.add_option('--verbose', '-v', action="store_true", default=False)
     #p.add_option('--exclude', '-x', default=None) ---TODO!---
