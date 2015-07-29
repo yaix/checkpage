@@ -1,4 +1,4 @@
-#checkpage
+# checkpage
 
 Simple CLI tool to check if static web pages have changed.
 
